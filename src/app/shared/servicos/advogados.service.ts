@@ -14,4 +14,20 @@ export class AdvogadosService {
   listar(): Observable<Advogado[]>{
     return this.httpClient.get<Advogado[]>(this.url);
   }
+
+  add(advogado:Advogado): Observable<Advogado>{
+    return this.httpClient.post<Advogado>(this.url,advogado);
+  }
+
+  remover(id: number): Observable<object> {
+    return this.httpClient.delete(`${this.url}/${id}`);
+  }
+
+  pesquisarPorId(id: number): Observable<Advogado> {
+    return this.httpClient.get<Advogado>(`${this.url}/${id}`);
+  }
+
+  atualizar(advogado: Advogado): Observable<Advogado> {
+    return this.httpClient.put<Advogado>(`${this.url}/${advogado.id}`, advogado);
+  }
 }

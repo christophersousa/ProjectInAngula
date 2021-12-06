@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { AppComponent } from 'src/app/app.component';
+import { MenuComponent } from 'src/app/layout/menu/menu.component';
 import { Advogado } from 'src/app/shared/modelo/advogado';
 import { arrayConsult } from 'src/app/shared/modelo/arrayConsult';
+import { AdvogadosFirestoreService } from 'src/app/shared/servicos/advogados-firestore.service';
 import { AdvogadosService } from 'src/app/shared/servicos/advogados.service';
 
 @Component({
@@ -9,13 +12,21 @@ import { AdvogadosService } from 'src/app/shared/servicos/advogados.service';
   styleUrls: ['./consult.component.scss']
 })
 export class ConsultComponent implements OnInit {
-
+  newConsulta: Advogado
   advogados= new Array<Advogado>();
   arrayAdvogados = new arrayConsult()
-  constructor(private advogadoService: AdvogadosService) { }
+  constructor(private advogadoService: AdvogadosFirestoreService, private user: AppComponent) {
+    this.newConsulta = new Advogado()
+    console.log(this.advogados)
+  }
+
 
   ngOnInit(): void {
-    this.advogadoService.listar().subscribe(advogados => this.advogados = advogados);
+    this.gerarDados()
+  }
+
+  async gerarDados(){
+    await this.advogadoService.listar().subscribe(advogados => this.advogados = advogados);
   }
 
   insertAdvogado(advogado: Advogado): void {
@@ -23,4 +34,8 @@ export class ConsultComponent implements OnInit {
     console.log(this.advogadoService.listar())
   }
 
+  insertConsulta(advogado){
+    console.log('oi')
+    this.user.inserirConsulta(advogado)
+  }
 }

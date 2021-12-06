@@ -1,4 +1,3 @@
-
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,6 +18,11 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
 import { ConsultComponent } from './page/consult/consult.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PopUpComponent } from './layout/pop-up/pop-up.component';
+import { MatOptionModule } from '@angular/material/core';
+import {MatSelectModule} from '@angular/material/select';
+import { FirestoreModule } from './firestore/firestore.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,8 @@ import { ConsultComponent } from './page/consult/consult.component';
     MenuComponent,
     LoginComponent,
     HomeComponent,
-    ConsultComponent
+    ConsultComponent,
+    PopUpComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +45,12 @@ import { ConsultComponent } from './page/consult/consult.component';
     MatIconModule,
     MatMenuModule,
     MatCardModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule,
+    MatOptionModule,
+    MatSelectModule,
+    FirestoreModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

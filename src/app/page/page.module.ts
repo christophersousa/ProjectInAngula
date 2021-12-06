@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { HomeComponent } from './home/home.component';
 import { ConsultComponent } from './consult/consult.component';
+import { LayoutModule } from '../layout/layout.module';
 
 
 
@@ -23,6 +24,7 @@ import { ConsultComponent } from './consult/consult.component';
     MatIconModule,
     MatMenuModule,
     MatCardModule,
+
   ]
 })
 export class PageModule { }

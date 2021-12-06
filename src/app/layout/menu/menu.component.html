@@ -3,14 +3,7 @@
   <img src="assets/logo.png" alt="AdvFox">
 
   <button mat-button type="button" routerLink="/home">Home</button>
-  <button mat-button [matMenuTriggerFor]="aboveMenu">Consult</button>
-  <mat-menu #aboveMenu="matMenu" yPosition="above">
-    <button mat-menu-item routerLink="/consult">Todos</button>
-    <button mat-menu-item >Direito Civil</button>
-    <button mat-menu-item>Direito Empresarial</button>
-    <button mat-menu-item>Direito do Consumidor</button>
-  </mat-menu>
-
+  <button mat-button routerLink="/consult">Consult</button>
   <button mat-button>Schedulings</button>
 
   <button mat-button>News</button>
@@ -18,6 +11,6 @@
 
   <button mat-button class="user">
     <mat-icon>account_circle</mat-icon>
-    Username
+    {{user.name}}
   </button>
 </div>

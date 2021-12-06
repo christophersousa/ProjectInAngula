@@ -66,24 +66,26 @@
         <mat-icon>keyboard_arrow_down</mat-icon>
       </span>
     </div>
+    <div class="containerConsult">
 
-    <mat-card class="card">
-      <mat-card-title-group>
-        <img mat-card-sm-image src="https://revistaensinosuperior.com.br/wp-content/uploads/2020/09/desafios-mulheres-advogadas-artigo-853x641.jpg" >
-        <mat-card-title>Dr. Raissa Galdino</mat-card-title>
-        <mat-card-subtitle>Dr. in criminal rights</mat-card-subtitle>
-      </mat-card-title-group>
-      <mat-card-content>
-        <p class="date">
-          <mat-icon>today</mat-icon>
-          10 jul
-        </p>
-        <p class="hour">
-          <mat-icon>schedule</mat-icon>
-          10 hrs
-        </p>
-      </mat-card-content>
-    </mat-card>
+      <mat-card class="card" *ngFor="let consulta of consultas">
+        <mat-card-title-group>
+          <img mat-card-sm-image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFH1A774qwkiKRK7AC0sQZXmYl09VTsIj15TFA4t_gJZJ0VcycxEgcUVKBLgK1UziWYPU&usqp=CAU" >
+          <mat-card-title>{{consulta?.name}}</mat-card-title>
+          <mat-card-subtitle>{{consulta?.area}}</mat-card-subtitle>
+        </mat-card-title-group>
+        <mat-card-content>
+          <p class="date">
+            <mat-icon>today</mat-icon>
+            10 jul
+          </p>
+          <p class="hour">
+            <mat-icon>schedule</mat-icon>
+            10 hrs
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </div>
   </div>
 
 </main>
