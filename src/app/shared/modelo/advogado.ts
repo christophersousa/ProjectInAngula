@@ -1,8 +1,9 @@
 export class Advogado{
     id:number;
-    name: string;
+    nome: string;
+    email: string;
+    data_nascimento: string;
     area: string;
-    data_nascimento: string
-    senha: string
-    email: string
+    senha: string;
+    descricao: string;
 }

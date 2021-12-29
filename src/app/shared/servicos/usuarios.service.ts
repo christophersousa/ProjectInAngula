@@ -8,7 +8,7 @@ import { User } from '../modelo/user';
 })
 
 export class UsuarioService {
-  url= 'http://localhost:3000/usuarios'
+  url= 'http://localhost:8080/usuarios'
   constructor(private httpClient: HttpClient) { }
 
   listar(): Observable<User[]>{

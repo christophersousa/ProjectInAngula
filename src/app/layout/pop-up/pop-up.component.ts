@@ -29,6 +29,7 @@ export class PopUpComponent implements OnInit {
   NewUser: User
   advogados: Array<Advogado>
   users: Array<User>
+
   senhaUser: string
   confirme_senhaUser: string
   emailUser: string
@@ -36,6 +37,7 @@ export class PopUpComponent implements OnInit {
   dataUser: string
   typeUser: string
   areaUser: string
+  descricaoAdv: string
 
   Perfis: Perfil[] = [
     {value: 'user', viewValue: 'User'},
@@ -48,8 +50,8 @@ export class PopUpComponent implements OnInit {
     {value: 'Direito Empresarial', viewValue: 'Direito Empresarial'}
   ];
 
-  constructor(private modalService: NgbModal, private advogadoService: AdvogadosFirestoreService,
-              private userService: UsuariosFirestoreService) {
+  constructor(private modalService: NgbModal, private advogadoService: AdvogadosService,
+              private userService: UsuarioService) {
     this.NewAdvogado = new Advogado()
     this.NewUser = new User()
    }
@@ -68,18 +70,19 @@ export class PopUpComponent implements OnInit {
     });
   }
   private insertDataUser(data: User){
-    data.name = this.nameUser
+    data.nome = this.nameUser
     data.email = this.emailUser
     data.senha = this.senhaUser
     data.data_nascimento = this.dataUser
     return data
   }
   private insertDataAdvogado(data: Advogado){
-    data.name = this.nameUser
+    data.nome = this.nameUser
     data.email = this.emailUser
-    data.senha = this.senhaUser
     data.data_nascimento = this.dataUser
     data.area = this.areaUser
+    data.senha = this.senhaUser
+    data.descricao = this.descricaoAdv
     return data
   }
 
@@ -88,14 +91,13 @@ export class PopUpComponent implements OnInit {
       if(this.typeUser === this.Perfis[0].value){
         this.NewUser = this.insertDataUser(this.NewUser)
         this.inserirUsuario()
+        console.log(this.NewUser)
         this.NewUser = new User()
-        window.location.href = "/home";
       }else{
 
         this.NewAdvogado = this.insertDataAdvogado(this.NewAdvogado)
         this.inserirAdvogado()
         this.NewAdvogado = new Advogado()
-        window.location.href = "/home";
       }
 
     }else{
@@ -108,8 +110,10 @@ export class PopUpComponent implements OnInit {
     console.log(this.typeUser)
     if(this.typeUser === this.Perfis[1].value){
       document.getElementById('area').style.display='block'
+      document.getElementById('descricao').style.display='block'
     }else{
       document.getElementById('area').style.display='none'
+      document.getElementById('descricao').style.display='none'
     }
   }
 
@@ -140,7 +144,7 @@ export class PopUpComponent implements OnInit {
         }
       );
     } else {
-      this.advogadoService.inserir(this.NewAdvogado).subscribe(
+      this.advogadoService.add(this.NewAdvogado).subscribe(
         advogadoInserido => {
           console.log(advogadoInserido);
         }
@@ -156,7 +160,7 @@ export class PopUpComponent implements OnInit {
         }
       );
     } else {
-      this.userService.inserir(this.NewUser).subscribe(
+      this.userService.add(this.NewUser).subscribe(
         userAlterado => {
           console.log(userAlterado);
         }

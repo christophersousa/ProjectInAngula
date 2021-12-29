@@ -15,19 +15,16 @@
     <mat-card class="card" *ngFor="let advogado of advogados">
       <img mat-card-image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFH1A774qwkiKRK7AC0sQZXmYl09VTsIj15TFA4t_gJZJ0VcycxEgcUVKBLgK1UziWYPU&usqp=CAU" alt="Photo of a Shiba Inu">
       <mat-card-header>
-        <mat-card-title>{{advogado.name}}</mat-card-title>
+        <mat-card-title>{{advogado.nome}}</mat-card-title>
         <mat-card-subtitle>{{advogado.area}}</mat-card-subtitle>
       </mat-card-header>
-      <mat-card-content>
+      <mat-card-content class="descricao">
         <p>
-          The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-          A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-          bred for hunting.
+          {{advogado.descricao}}
         </p>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-button (click)="insertConsulta(advogado)"><mat-icon>favorite_border</mat-icon></button>
-        <button mat-button><mat-icon>speaker_notes</mat-icon></button>
+        <button mat-button (click)="insertConsulta(advogado)"><mat-icon>assignment</mat-icon></button>
       </mat-card-actions>
     </mat-card>
   </div>

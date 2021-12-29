@@ -39,7 +39,7 @@ export class AppComponent {
   teste1() {
     this.teste = new Advogado()
     this.teste.id = 7
-    this.teste.name = 'raissa'
+    this.teste.nome = 'raissa'
     this.teste.email = 'raissa@gmail.com'
     this.teste.data_nascimento = '14/05/2002'
     this.teste.senha = '12345'

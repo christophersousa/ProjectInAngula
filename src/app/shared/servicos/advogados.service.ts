@@ -8,7 +8,7 @@ import { Advogado } from '../modelo/advogado';
 })
 
 export class AdvogadosService {
-  url= 'http://localhost:3000/advogados'
+  url= 'http://localhost:8080/advogados'
   constructor(private httpClient: HttpClient) { }
 
   listar(): Observable<Advogado[]>{

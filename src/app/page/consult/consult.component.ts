@@ -15,7 +15,7 @@ export class ConsultComponent implements OnInit {
   newConsulta: Advogado
   advogados= new Array<Advogado>();
   arrayAdvogados = new arrayConsult()
-  constructor(private advogadoService: AdvogadosFirestoreService, private user: AppComponent) {
+  constructor(private advogadoService: AdvogadosService, private user: AppComponent) {
     this.newConsulta = new Advogado()
     console.log(this.advogados)
   }
@@ -27,6 +27,7 @@ export class ConsultComponent implements OnInit {
 
   async gerarDados(){
     await this.advogadoService.listar().subscribe(advogados => this.advogados = advogados);
+    console.log(this.advogados)
   }
 
   insertAdvogado(advogado: Advogado): void {

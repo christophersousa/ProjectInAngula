@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   users: Array<User>;
   emailLogin: string;
   senhaLogin: string;
-  constructor(private userService: UsuariosFirestoreService, private advogadoService: AdvogadosService,
+  constructor(private userService: UsuarioService, private advogadoService: AdvogadosService,
     private userPrimary: AppComponent, private rota: Router) {
     this.Newuser = new User();
     this.emailLogin = '';
@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
   verification(){
     console.log(this.users);
     this.users.forEach(user => {
-      if(user.email === this.emailLogin || user.name === this.emailLogin &&
+      if(user.email === this.emailLogin || user.nome === this.emailLogin &&
         user.senha === this.senhaLogin){
         console.log(user);
         this.userPrimary.insertUser(user)
